@@ -5,11 +5,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Browser {
     private WebDriver driver;
 
-    public Browser() {
+    /* Default Chrome instance will be created */
+    public Browser() throws Exception {
         Browser("Chrome");
     }
 
-    public Browser(final String browser) {
+    public Browser(final String browser) throws Exception {
         switch (browser) {
             case "Chrome":
                 System.setProperty("webdriver.chrome.driver", "G:\\chromedriver.exe");
@@ -19,6 +20,8 @@ public class Browser {
                 System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
                 driver = new FirefoxDriver();
                 break;
+            default:
+                throw new Exception("Browser not handled.");
         }
     }
 
