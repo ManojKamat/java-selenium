@@ -1,24 +1,27 @@
+package com.mdk;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Browser {
     private WebDriver driver;
 
     /* Default Chrome instance will be created */
-    public Browser() throws Exception {
-        Browser("Chrome");
+    Browser() throws Exception {
+        this("Chrome");
     }
 
-    public Browser(final String browser) throws Exception {
+    Browser(String browser) throws Exception {
         switch (browser) {
             case "Chrome":
-                System.setProperty("webdriver.chrome.driver", "G:\\chromedriver.exe");
-                driver = new ChromeDriver();
+                System.setProperty("webdriver.chrome.driver",
+                        "C:\\Users\\mdkamat\\Downloads\\chromedriver_win32\\chromedriver.exe");
+                this.driver = new ChromeDriver();
                 break;
             case "Firefox":
                 System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
-                driver = new FirefoxDriver();
+                this.driver = new FirefoxDriver();
                 break;
             default:
                 throw new Exception("Browser not handled.");
@@ -26,6 +29,11 @@ public class Browser {
     }
 
     public WebDriver getDriver() {
+        return this.driver;
+    }
+
+    private WebDriver get(String url) {
+        this.driver.get(url);
         return driver;
     }
 }

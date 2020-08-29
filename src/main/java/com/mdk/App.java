@@ -2,32 +2,24 @@ package com.mdk;
 
 import org.openqa.selenium.WebDriver;
 
-/**
- * Hello world!
- */
 public final class App {
     private App() {
     }
 
-    /**
-     * Says hello to the world.
-     * 
-     * @param args The arguments of the program.
-     */
-    public static void main(String[] args) {
-        Browser obj = new Browser();
+    public static void main(final String[] args) throws Exception {
+        final Browser obj = new Browser();
 
-        String baseUrl = "http://demo.guru99.com/test/newtours/";
-        String expectedTitle = "Welcome: Mercury Tours";
+        final String baseUrl = "http://demo.guru99.com/test/newtours/";
+        final String expectedTitle = "Welcome: Mercury Tours";
         String actualTitle = "";
 
-        WebDriver driver = obj.getDriver();
+        final WebDriver driver = obj.getDriver();
 
         // launch Fire fox and direct it to the Base URL
         driver.get(baseUrl);
 
         // get the actual value of the title
-        actualTitle = driver().getTitle();
+        actualTitle = driver.getTitle();
 
         /*
          * compare the actual title of the page with the expected one and print the
